@@ -1,0 +1,15 @@
+.list-button {
+  height: 90px;
+  background: url("../../images/Group-174.svg") no-repeat center top;
+  width: 100%;
+  display: flex;
+  padding-top: 100px;
+  justify-content: space-around;
+  
+  .list-button__selected {
+    font-size: 20px;
+    color: #FFFFFF;
+  }
+}
+
+

@@ -1,0 +1,14 @@
+@import "reset-style.css";
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-mudiale {
+  height: 100vh;
+  width: 100vw;
+}
