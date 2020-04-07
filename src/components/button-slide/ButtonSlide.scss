@@ -1,9 +1,20 @@
 .button-slide {
+  width: 11px;
   .button-slide__btn {
     border: none;
     background: none;
     padding: 0 30px;
     color: #FFFFFF;
     font-size: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 20px;
+  }
+  
+  .button-slide__btn--off {
+    width: 11px;
   }
 }

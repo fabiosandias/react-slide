@@ -5,12 +5,13 @@ import ListButton from "../list-button/ListButton";
 import { useParams } from "react-router-dom";
 
 export default props => {
-    debugger;
     const { letter } = useParams();
 
-    const [latterActive, setLatterActive] = useState('A');
+    const [letterActive, setLetterActive] = useState('A');
+    const [letterBack, setLetterBack] = useState(null);
+    const [letterNext, setLetterNext] = useState('B');
 
-    const alphabet = {
+    const ALPHABET = {
         A: {LETTER: 'A', IS_ACTIVE: true},
         B: {LETTER: 'B', IS_ACTIVE: false},
         C: {LETTER: 'C', IS_ACTIVE: false},
@@ -35,27 +36,77 @@ export default props => {
         V: {LETTER: 'V', IS_ACTIVE: false},
         W: {LETTER: 'W', IS_ACTIVE: false},
         X: {LETTER: 'X', IS_ACTIVE: false},
-        Y: {LETTER: 'Z', IS_ACTIVE: false},
+        Y: {LETTER: 'Y', IS_ACTIVE: false},
         Z: {LETTER: 'Z', IS_ACTIVE: false},
     };
 
+    const arrayAlphabet = [
+        {LETTER: 'A', IS_ACTIVE: true},
+        {LETTER: 'B', IS_ACTIVE: false},
+        {LETTER: 'C', IS_ACTIVE: false},
+        {LETTER: 'D', IS_ACTIVE: false},
+        {LETTER: 'E', IS_ACTIVE: false},
+        {LETTER: 'F', IS_ACTIVE: false},
+        {LETTER: 'G', IS_ACTIVE: false},
+        {LETTER: 'H', IS_ACTIVE: false},
+        {LETTER: 'I', IS_ACTIVE: false},
+        {LETTER: 'J', IS_ACTIVE: false},
+        {LETTER: 'K', IS_ACTIVE: false},
+        {LETTER: 'L', IS_ACTIVE: false},
+        {LETTER: 'M', IS_ACTIVE: false},
+        {LETTER: 'N', IS_ACTIVE: false},
+        {LETTER: 'O', IS_ACTIVE: false},
+        {LETTER: 'P', IS_ACTIVE: false},
+        {LETTER: 'Q', IS_ACTIVE: false},
+        {LETTER: 'R', IS_ACTIVE: false},
+        {LETTER: 'S', IS_ACTIVE: false},
+        {LETTER: 'T', IS_ACTIVE: false},
+        {LETTER: 'U', IS_ACTIVE: false},
+        {LETTER: 'V', IS_ACTIVE: false},
+        {LETTER: 'W', IS_ACTIVE: false},
+        {LETTER: 'X', IS_ACTIVE: false},
+        {LETTER: 'Y', IS_ACTIVE: false},
+        {LETTER: 'Z', IS_ACTIVE: false},
+    ]
+
     const setLetter = letter => {
-        if (letter) {
-            setLatterActive(alphabet[letter.toUpperCase()]['LETTER'])
+        const index = getIndex(letter);
+
+        if (letter && letter !== 'A' && letter !== 'Z') {
+            setLetterActive(ALPHABET[letter.toUpperCase()]['LETTER']);
+            setLetterBack(arrayAlphabet[index - 1].LETTER);
+            setLetterNext(arrayAlphabet[index + 1].LETTER);
+            return false;
+        }
+
+        if (letter && letter === 'Z') {
+            setLetterActive(ALPHABET[letter.toUpperCase()]['LETTER']);
+            setLetterBack('Y');
+            setLetterNext('A');
+        }
+        else {
+            setLetterActive(ALPHABET.A.LETTER);
+            setLetterBack(null);
+            setLetterNext(ALPHABET.B.LETTER);
         }
     }
+
+    const getIndex = (letterActive) => {
+        return arrayAlphabet.map(letter => letter.LETTER).indexOf(letterActive ? letterActive.toUpperCase() : 'A')
+    }
+
     useEffect(() => {
         setLetter(letter);
-    }, [letter, alphabet]);
+    }, [letter, ALPHABET]);
 
     return (
         <>
            <div className="home">
                <div className="home__list-button">
-                   <ListButton latter={latterActive}/>
+                   <ListButton letter={letterActive} back={letterBack} next={letterNext}/>
                </div>
                <div className="home__profile-list">
-                    <ListProfile letterList={} />
+                    <ListProfile letterList={letterActive} />
                </div>
            </div>
         </>
