@@ -25,7 +25,6 @@ export default props => {
             showSlide();
             setUsers(filterByLetter(letter));
         }
-
     }, [letter]);
 
     return (
@@ -34,7 +33,7 @@ export default props => {
                 <ul className="list-profile__ul">
                     {users.map(user =>
                         <li key={user.id} className="list-profile__li">
-                            <div className="list-profile__li-box">
+                            <div className="list-profile__li-box list-profile__shadow">
                             <span className="list-profile__li--photo">
                                 <img src={`../../images/${user.image}`} alt=""/>
                             </span>
