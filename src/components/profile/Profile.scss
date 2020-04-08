@@ -1,10 +1,14 @@
+@import "../../style/index";
 .profile {
   height: 100%;
   background: #405264 url("../../images/profile-bg_2.png") repeat-x left top;
   width: 100%;
+  .slide {
+    animation: slideEnter 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750) both;
+  }
   
   .profile__box-image {
-    padding-top: 30px;
+    padding-top: 0px;
     display: flex;
     justify-content: center;
     
@@ -103,5 +107,13 @@
       height: 100%;
       border-radius: 10px;
     }
+  }
+  
+  .profile__icon {
+    color: #FFF;
+    padding: 20px;
+    top: 20px;
+    position: relative;
+    font-size: 30px;
   }
 }

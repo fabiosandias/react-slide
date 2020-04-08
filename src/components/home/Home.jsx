@@ -4,7 +4,7 @@ import './Home.scss';
 import ListButton from "../list-button/ListButton";
 import { useParams } from "react-router-dom";
 import { ALPHABET, ARRAY_ALPHABET } from "../../constants/Constants";
-import { getIndex } from "../../utils/utils";
+import Utils from "../../utils/Utils";
 
 export default props => {
     const { letter } = useParams();
@@ -12,6 +12,7 @@ export default props => {
     const [letterActive, setLetterActive] = useState('A');
     const [letterBack, setLetterBack] = useState(null);
     const [letterNext, setLetterNext] = useState('B');
+    const { getIndex }  = Utils()
 
     const setLetter = letter => {
         const index = getIndex(letter);

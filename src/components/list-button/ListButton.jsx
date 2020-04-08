@@ -6,7 +6,6 @@ import {useParams} from "react-router-dom";
 export default props => {
     const [keyFrame, setKeyFrame] = useState(false);
     const [letterActive, setLetterActive] = useState(props.letter)
-
     const { letter } = useParams();
 
     const showSlide = () => {
@@ -21,7 +20,7 @@ export default props => {
     }, [letterActive, letter])
     return (
             <div className="list-button">
-                <div className={`list-button__slide ${keyFrame ? "ng-enter" : ''}`}>
+                <div className={`list-button__slide ${keyFrame ? "list-button__slide--active" : ''}`}>
                     <div className="list-button__first">
                         <ButtonSlide letter={props.back}></ButtonSlide>
                     </div>

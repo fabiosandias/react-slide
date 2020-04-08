@@ -1,3 +1,4 @@
+@import "../../style/index";
 .list-button {
   height: 90px;
   background: url("../../images/Group-174.svg") no-repeat center top;
@@ -9,26 +10,14 @@
     color: #FFFFFF;
   }
 }
-
-$transform-start: translate3d(100%, 0, 0);
-$transform-end:  translate3d(0, 0, 0);
 .list-button__slide {
   width: 100%;
   display: flex;
   justify-content: space-around;
   position: absolute;
   
-  &.ng-enter {
+  &.list-button__slide--active {
     animation: slideEnter 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750) both;
-  }
-}
-
-@keyframes slideEnter {
-  0% {
-    transform: $transform-start;
-  }
-  100% {
-    transform: $transform-end;
   }
 }
 
