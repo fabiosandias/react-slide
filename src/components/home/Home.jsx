@@ -34,7 +34,7 @@ export default props => {
         if (letter && letter.toUpperCase() === ALPHABET.Z.LETTER) {
             setLetterActive(ALPHABET[letter.toUpperCase()]['LETTER']);
             setLetterBack(ALPHABET.Y.LETTER);
-            setLetterNext(ALPHABET.Z.LETTER);
+            setLetterNext(ALPHABET.A.LETTER);
         }
         else {
             setLetterActive(ALPHABET.A.LETTER);

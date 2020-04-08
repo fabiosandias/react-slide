@@ -201,6 +201,24 @@ const USERS = [
         },
         email: 'bruno@mudiale.com.br'
     },
+    {
+        id: 8,
+        name: 'Alessandra Fernandes',
+        isActive: true,
+        image: '0-1.jpg',
+        role: 'Desenvolvedor',
+        phone: {
+            fix: {
+                ddd: '31',
+                phone: '3265 - 5689'
+            },
+            mobile: {
+                ddd: '31',
+                phone: '9.8568 - 8959'
+            },
+        },
+        email: 'bruno@mudiale.com.br'
+    },
 ];
 
 export { ARRAY_ALPHABET, ALPHABET, USERS };

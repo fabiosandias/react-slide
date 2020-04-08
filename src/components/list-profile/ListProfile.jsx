@@ -10,6 +10,7 @@ export default props => {
     const [ users, setUsers ] = useState([]);
     const [ defaultLetter, setDefaultLetter ] = useState('A')
     const { filterByLetter } = Utils();
+    const [ numberEmptyCard, setNumberEmptyCard ] = useState(Array.from({length: 5}, (v, k) => k));
 
     const showSlide = () => {
         setKeyFrame(true);
@@ -18,12 +19,28 @@ export default props => {
         }, 1000);
     }
 
+    const verifyEmptyCard = (dataUsers) => {
+        if (dataUsers.length === 0) {
+            setNumberEmptyCard(Array.from({length: 5}))
+        }
+
+        if (dataUsers.length > 5) {
+            setNumberEmptyCard(Array.from({length: 0}))
+        }
+
+        if (dataUsers.length > 0 && dataUsers.length <= 5) {
+            setNumberEmptyCard(Array.from({length: 5 - dataUsers.length}))
+        }
+    }
+
     useEffect(() => {
         if (!letter || letter && ARRAY_ALPHABET.every(lt => lt.LETTER !== letter.toUpperCase())) {
             showSlide();
             setUsers(filterByLetter(defaultLetter));
+            verifyEmptyCard(filterByLetter(defaultLetter));
         } else  {
             showSlide();
+            verifyEmptyCard(filterByLetter(letter));
             setUsers(filterByLetter(letter));
         }
     }, [letter]);
@@ -51,11 +68,13 @@ export default props => {
                         </li>
                     )}
 
-                    <li className="list-profile__li list-profile__li--empty">
-                        <div className="list-profile__li-box list-profile__li-box--empty">
+                    {numberEmptyCard.map((num, index) =>
+                        <li key={index} className="list-profile__li list-profile__li--empty">
+                            <div className="list-profile__li-box list-profile__li-box--empty">
 
-                        </div>
-                    </li>
+                            </div>
+                        </li>
+                    )}
                 </ul>
             </div>
         </React.Fragment>
