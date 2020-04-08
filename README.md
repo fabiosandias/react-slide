@@ -1,6 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Olá dev..., tudo bem?
+Essa é uma simples descrição desse pequeno projeto. Nessa aplicação você irá visualizar um simples efeito de slide na versão mobile do browser.
 
-## Available Scripts
+Além de você poder brincar com esse efeito, você pode também ver os
+perfil dos usuários.
+
+### Segue as instruções para rodar o projeto
+
+Para rodar esse projeto é muito simples.
+
+1 - Clone o projeto pra dentro da pasta de seus projeto rodando o comando `git clone git@github.com:fabiosandias/react-slide.git` <br />
+2 - Entre na pasta do projeto: `cd react-slide` <br />
+3 - Execute `npm i` ou `npm install` <br />
+4 - Execute o comando `npm start` para o projeto ser executado e você poder visualiza-lo no navegador.
+
+## Atenção, coloque seu browser na versão mobile
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Available Scripts
 
 In the project directory, you can run:
 
