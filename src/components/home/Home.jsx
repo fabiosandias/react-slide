@@ -15,25 +15,36 @@ export default props => {
     const { getIndex }  = Utils()
 
     const setLetter = letter => {
+        if (urlIsLetter(letter)) {
+            setLetterActive(ALPHABET.A.LETTER);
+            setLetterBack(null);
+            setLetterNext(ALPHABET.B.LETTER);
+            return false;
+        }
+
         const index = getIndex(letter);
 
-        if (letter && letter !== 'A' && letter !== 'Z') {
+        if (letter && letter.toUpperCase() !== ALPHABET.A.LETTER && letter.toUpperCase() !== ALPHABET.Z.LETTER) {
             setLetterActive(ALPHABET[letter.toUpperCase()]['LETTER']);
             setLetterBack(ARRAY_ALPHABET[index - 1].LETTER);
             setLetterNext(ARRAY_ALPHABET[index + 1].LETTER);
             return false;
         }
 
-        if (letter && letter === 'Z') {
+        if (letter && letter.toUpperCase() === ALPHABET.Z.LETTER) {
             setLetterActive(ALPHABET[letter.toUpperCase()]['LETTER']);
-            setLetterBack('Y');
-            setLetterNext('A');
+            setLetterBack(ALPHABET.Y.LETTER);
+            setLetterNext(ALPHABET.Z.LETTER);
         }
         else {
             setLetterActive(ALPHABET.A.LETTER);
             setLetterBack(null);
             setLetterNext(ALPHABET.B.LETTER);
         }
+    }
+
+    const urlIsLetter = (letter) => {
+        return letter && ARRAY_ALPHABET.every(lt => lt.LETTER !== letter.toUpperCase());
     }
 
     useEffect(() => {

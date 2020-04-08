@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './ListProfile.scss';
 import {Link, useParams} from "react-router-dom";
 import Utils from "../../utils/Utils";
+import {ARRAY_ALPHABET} from "../../constants/Constants";
 
 export default props => {
     const [keyFrame, setKeyFrame] = useState(false);
@@ -18,7 +19,7 @@ export default props => {
     }
 
     useEffect(() => {
-        if (!letter) {
+        if (!letter || letter && ARRAY_ALPHABET.every(lt => lt.LETTER !== letter.toUpperCase())) {
             showSlide();
             setUsers(filterByLetter(defaultLetter));
         } else  {
